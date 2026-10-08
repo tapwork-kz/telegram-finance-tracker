@@ -1,0 +1,22 @@
+name = "telegram-finance-tracker"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "telegram_finance_tracker_db"
+database_id = "da2f7805-57eb-42cc-a3c0-dcc77cfd9f63"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "STATEMENTS_BUCKET"
+bucket_name = "telegram-finance-statements"
+
+[triggers]
+crons = ["0 4 * * *"] # Daily at 09:00 AM Asia/Almaty (04:00 UTC)
+
+[vars]
+ENVIRONMENT = "production"
+DEFAULT_TIMEZONE = "Asia/Almaty"
+STATEMENT_REMINDER_INTERVAL_HOURS = "24"
